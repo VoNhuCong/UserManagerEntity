@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UserManagerEntity</name>
+    </assembly>
+    <members>
+        <member name="T:UserManagerEntity.Configurations.ServicesConfiguration">
+            <summary>
+            Class for add services
+            </summary>
+        </member>
+        <member name="M:UserManagerEntity.Configurations.ServicesConfiguration.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Define service here
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="P:UserManagerEntity.Contract.Requests.UserRequest.Password">
+             <summary>
+             Password of the user
+            
+                 Password must meet the following requirements:
+                     - minimum length: 6
+                     - includes at least one digit [0-9]
+                     - includes at least one uppercase character
+                     - includes at least one lowercase character
+                     - includes at least one non-alphanumeric character
+             </summary>
+             <example>Sup3rSt0ngP@$$w0rd</example>
+        </member>
+        <member name="P:UserManagerEntity.Contract.Responses.AuthResponse.Token">
+            <summary>
+            JWT (JSON Web Token)
+                
+                JWT Token is short-lived.
+                Must call RefreshToken endpoint to get new one after the expiration.
+                
+            </summary>
+            <example>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5ZjdhN2QyZS1hYmQ4LTQ1MTQtODM4YS1kNjFkOTExZDQzYjgiLCJpZCI6ImVkNzNiODE5LWVkMzUtNDJlZi1iNjBjLTdhY2I3Yzc4N2Q4NSIsInVzZXJOYW1lIjoiQ29vbFVzZXJOYW1lIiwiZGlzcGxheU5hbWUiOiJL4bu5IHRodeG6rXQgdmnDqm4gxJHDoGkgaHV54buHbiIsInJlZ2lvbklkIjoiMSIsImV4cCI6MTY0ODUyNDUwOCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAwIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAwIn0.HnrOfSk0Z077neXnIv77WgocFh3cX8osUz4Li0W8WXU</example>
+        </member>
+        <member name="P:UserManagerEntity.Contract.Responses.AuthResponse.RefreshToken">
+            <summary>
+            Refresh token for current session
+                
+                Refresh Token expires after few days.
+                Must re-login after that time since last refresh.
+                
+            </summary>
+            <example>A4zEjXMnRVMYDLwMiHnYsiwQ1BnoIoTp66Huz1uEtjXxOMI78eBESJoX3eoRZLSvhtsVda3uegKdzxT0SQyTjg==</example>
+        </member>
+        <member name="P:UserManagerEntity.Contract.Responses.LoginResponse.RefreshToken">
+            <summary>
+            Là loại token để tạo một token mới khi nó hết hạn, có thời gian tồn tại lâu hơn token
+            Thời gian tồn tại thường vài ngày hoặc vài tuần
+            </summary>
+        </member>
+        <member name="M:UserManagerEntity.Controllers.AccountController.SignUp(UserManagerEntity.Contract.Requests.UserRequest)">
+            <summary>
+            Đăng ký
+            </summary>
+            <param name="signUpModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagerEntity.Controllers.AccountController.SignIn(UserManagerEntity.Contract.Requests.LoginRequest)">
+            <summary>
+            Đăng nhập
+            </summary>
+            <param name="signInModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagerEntity.Controllers.AuthController.#ctor(Microsoft.AspNetCore.Identity.UserManager{UserManagerEntity.Models.Entities.User},Microsoft.AspNetCore.Identity.SignInManager{UserManagerEntity.Models.Entities.User},Microsoft.AspNetCore.Identity.RoleManager{UserManagerEntity.Models.Entities.Role},UserManagerEntity.Settings.IdentitySettings,UserManagerEntity.Models.DataContext,Microsoft.IdentityModel.Tokens.TokenValidationParameters,UserManagerEntity.Settings.JwtSettings,UserManagerEntity.Services.IUserServices,UserManagerEntity.Repository.IAccountRepository)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="userManager"></param>
+            <param name="signInManager"></param>
+            <param name="roleManager"></param>
+            <param name="identitySettings"></param>
+            <param name="context"></param>
+            <param name="tokenValidationParameters"></param>
+            <param name="jwtSettings"></param>
+            <param name="IUserServices"></param>
+            <param name="IAccountRepository"></param>
+        </member>
+        <member name="M:UserManagerEntity.Controllers.AuthController.SignUp(UserManagerEntity.Contract.Requests.UserRequest)">
+            <summary>
+            Đăng ký
+            </summary>
+            <param name="signUpModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagerEntity.Controllers.AuthController.SignIn(UserManagerEntity.Contract.Requests.LoginRequest)">
+            <summary>
+            Đăng nhập
+            </summary>
+            <param name="signInModel"></param>
+            <returns></returns>
+        </member>
+        <member name="P:UserManagerEntity.Models.Entities.Blog.BlogStar">
+            <summary>
+            Đánh giá bài viết 
+            </summary>
+        </member>
+        <member name="M:UserManagerEntity.Repository.IAccountRepository.SignUpAsync(UserManagerEntity.Contract.Requests.UserRequest)">
+            <summary>
+            Đăng ký
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagerEntity.Repository.IAccountRepository.SignInAsync(UserManagerEntity.Contract.Requests.LoginRequest)">
+            <summary>
+            Đăng nhập trả về token
+            </summary>
+            <param name="login"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagerEntity.Repository.AccountRepository.SignInAsync(UserManagerEntity.Contract.Requests.LoginRequest)">
+            <summary>
+            Đănh nhập
+            </summary>
+            <param name="login"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagerEntity.Repository.AccountRepository.SignUpAsync(UserManagerEntity.Contract.Requests.UserRequest)">
+            <summary>
+            Đăng ký
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagerEntity.Services.IUserServices.UserToUserInfoAsync(UserManagerEntity.Models.Entities.User,System.Threading.CancellationToken)">
+            <summary>
+            Chuyển đổi User thành một dạng khác tùy theo nhu cầu ứng dụng
+            </summary>
+            <param name="user"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagerEntity.Services.IUserServices.CheckPasswordAsync(UserManagerEntity.Models.Entities.User,System.String)">
+            <summary>
+            Trả về True nếu password khớp với thông tin password trong db
+            </summary>
+            <param name="user"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagerEntity.Services.IUserServices.GetAsync(System.String)">
+            <summary>
+            Trả về User lấy từ Id của User
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:UserManagerEntity.Settings.JwtSettings.Issuer">
+            <summary>
+            Issuer of the token
+            Tổ chức phát hành token, this app
+            </summary>
+        </member>
+        <member name="P:UserManagerEntity.Settings.JwtSettings.Audience">
+            <summary>
+            Audience of the token
+            Thực thể nhận token, user
+            </summary>
+        </member>
+        <member name="P:UserManagerEntity.Settings.JwtSettings.Key">
+            <summary>
+            Secret key for JWT generation
+            </summary>
+        </member>
+        <member name="P:UserManagerEntity.Settings.JwtSettings.Lifetime">
+            <summary>
+            JWT lifetime
+            khoảng thời gian token có giá trị
+            </summary>
+        </member>
+        <member name="P:UserManagerEntity.Settings.JwtSettings.RefreshTokenTTL">
+            <summary>
+            Refresh token Time To Live (TTL) in days.
+            Inactive tokens are automatically deleted from the database after this time.
+            thời gian tồn tại của token refresh 
+            </summary>
+        </member>
+        <member name="P:UserManagerEntity.Settings.JwtSettings.ClockSkew">
+            <summary>
+            ClockSkew to set token expiration time offset
+            </summary>
+        </member>
+    </members>
+</doc>
